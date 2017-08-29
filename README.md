@@ -12,14 +12,14 @@ This is a [Chef] cookbook to manage [auditbeat].
 ## Most Recent Release
 
 ```ruby
-cookbook 'auditbeat', '~> 0.0.1'
+cookbook 'auditbeat', '~> 0.0.2'
 ```
 
 
 ## From Git
 
 ```ruby
-cookbook 'auditbeat', github: 'vkhatri/chef-auditbeat',  tag: 'v0.0.1'
+cookbook 'auditbeat', github: 'vkhatri/chef-auditbeat',  tag: 'v0.0.2'
 ```
 
 
@@ -72,7 +72,7 @@ https://github.com/vkhatri/chef-auditbeat
 ## Core Attributes
 
 
-* `default['auditbeat']['version']` (default: `5.5.1`): auditbeat version
+* `default['auditbeat']['version']` (default: `6.0.0-beta1`): auditbeat version
 
 * `default['auditbeat']['ignore_version']` (default: `false`): ignore auditbeat version for `package` install
 
