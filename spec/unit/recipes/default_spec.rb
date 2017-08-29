@@ -17,7 +17,6 @@ describe 'auditbeat::default' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'centos', version: '6.8') do |node|
         node.automatic['platform_family'] = 'rhel'
-        node.override['auditbeat']['version'] = '6.0.0-beta1'
       end.converge(described_recipe)
     end
 
@@ -40,7 +39,6 @@ describe 'auditbeat::default' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'centos', version: '6.8') do |node|
         node.automatic['platform_family'] = 'rhel'
-        node.override['auditbeat']['ignore_version'] = true
         node.override['auditbeat']['version'] = '6.0.0'
       end.converge(described_recipe)
     end
@@ -74,7 +72,7 @@ describe 'auditbeat::default' do
     end
 
     it 'add yum_version_lock auditbeat' do
-      expect(chef_run).not_to update_yum_version_lock('auditbeat')
+      expect(chef_run).to update_yum_version_lock('auditbeat')
     end
   end
 
@@ -82,7 +80,7 @@ describe 'auditbeat::default' do
     let(:chef_run) do
       ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04') do |node|
         node.automatic['platform_family'] = 'debian'
-        node.override['auditbeat']['ignore_version'] = true
+        node.override['lsb']['codename'] = 'trusty'
         node.override['auditbeat']['version'] = '6.0.0'
       end.converge(described_recipe)
     end
@@ -100,7 +98,7 @@ describe 'auditbeat::default' do
     end
 
     it 'add apt_preference auditbeat' do
-      expect(chef_run).not_to add_apt_preference('auditbeat')
+      expect(chef_run).to add_apt_preference('auditbeat')
     end
 
     it 'include recipe auditbeat::install_package' do

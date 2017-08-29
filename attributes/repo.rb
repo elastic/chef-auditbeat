@@ -6,7 +6,6 @@ default['auditbeat']['yum']['action'] = :create
 
 default['auditbeat']['apt']['description'] = 'Elastic Beats Repository'
 default['auditbeat']['apt']['components'] = %w[stable main]
-default['auditbeat']['apt']['distribution'] = ''
-# apt package install options
+default['auditbeat']['apt']['distribution'] = node['lsb']['codename'] if node['platform_family'] == 'debian'
 default['auditbeat']['apt']['options'] = "-o Dpkg::Options::='--force-confnew' --force-yes"
 default['auditbeat']['apt']['action'] = :add
