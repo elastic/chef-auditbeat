@@ -32,7 +32,9 @@ default['auditbeat']['config']['auditbeat.modules'] = []
 # default['auditbeat']['logging.level'] = 'debug'
 # default['auditbeat']['logging.selectors'] = ['*']
 
-default['auditbeat']['config']['output'] = {}
+# Auditbeat required at least one output to start, and usually those are defined
+# in output.foo format
+# default['auditbeat']['config']['output'] = {}
 # Elasticsearch host attributes
 # default['auditbeat']['config']['output']['elasticsearch']['enable'] = true
 
