@@ -34,3 +34,6 @@ end
 
 # configure auditbeat
 include_recipe 'auditbeat::config'
+
+# install/start service
+include_recipe 'auditbeat::service'
