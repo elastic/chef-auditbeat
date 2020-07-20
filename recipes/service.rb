@@ -17,6 +17,6 @@ service node['auditbeat']['service']['name'] do
   provider Chef::Provider::Service::Solaris if node['platform_family'] == 'solaris2'
   retries node['auditbeat']['service']['retries']
   retry_delay node['auditbeat']['service']['retry_delay']
-  supports :status => true, :restart => true
+  supports :status => true, :restart => !centos6?, :reload => false
   action service_action
 end
